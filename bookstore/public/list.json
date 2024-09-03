@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Story book",
+        "title": "this is a story book",
+        "price": 0,
+        "category": "Free",
+        "image": "https://img.freepik.com/free-photo/literature-composition_23-2147690556.jpg?t=st=1725363034~exp=1725366634~hmac=e52b3aa3e866e7dc2446ca87542118c7e163d99958fba1202d5d92fdd3f3d0ca&w=1060"
+    },
+    {
+        "id": 2,
+        "name": "commedy book",
+        "title": "this is a story book",
+        "price": 20,
+        "category": "Entertainment",
+        "image": "https://img.freepik.com/free-photo/literature-composition_23-2147690556.jpg?t=st=1725363034~exp=1725366634~hmac=e52b3aa3e866e7dc2446ca87542118c7e163d99958fba1202d5d92fdd3f3d0ca&w=1060"
+    },
+    {
+        "id": 3,
+        "name": "novel book",
+        "title": "this is a story book",
+        "price": 0,
+        "category": "Free",
+        "image": "https://img.freepik.com/free-photo/literature-composition_23-2147690556.jpg?t=st=1725363034~exp=1725366634~hmac=e52b3aa3e866e7dc2446ca87542118c7e163d99958fba1202d5d92fdd3f3d0ca&w=1060"
+    },
+    {
+        "id": 4,
+        "name": "Sports book",
+        "title": "this is a story book",
+        "price": 80,
+        "category": "Sports",
+        "image": "https://img.freepik.com/free-photo/literature-composition_23-2147690556.jpg?t=st=1725363034~exp=1725366634~hmac=e52b3aa3e866e7dc2446ca87542118c7e163d99958fba1202d5d92fdd3f3d0ca&w=1060"
+    },
+    {
+        "id": 5,
+        "name": "Song book",
+        "title": "this is a story book",
+        "price": 0,
+        "category": "Free",
+        "image": "https://img.freepik.com/free-photo/literature-composition_23-2147690556.jpg?t=st=1725363034~exp=1725366634~hmac=e52b3aa3e866e7dc2446ca87542118c7e163d99958fba1202d5d92fdd3f3d0ca&w=1060"
+    }
+]
