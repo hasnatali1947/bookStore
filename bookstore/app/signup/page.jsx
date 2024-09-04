@@ -1,14 +1,12 @@
 import React from 'react'
-import Course from '../../component/course/page'
-import Footer from '../../component/footer/footer'
+import Signup from '../../component/signup/page'
 import Navbar from "../../component/navbar/page";
 
 const page = () => {
   return (
     <div>
-      <Navbar />
-      <Course />
-      <Footer />
+        <Navbar />
+      <Signup />
     </div>
   )
 }
