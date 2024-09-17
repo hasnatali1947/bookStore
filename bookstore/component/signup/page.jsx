@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
+import { API } from '../../utils/api'
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -42,16 +45,39 @@ const Signup = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const data =
+        {
+            name,
+            email,
+            password,
+            Cpassword
+        }
+
+        try {
+            const response = await axios.post(API.user.signUp, data)
+
+            if(response){
+                setName("")
+                setEmail("")
+                setPassword("")
+                setCpassword("")
+            }
+            router.push("/login")
+            toast("Signup Successfully")
+        } catch (error) {
+            console.error(error);
+            toast.error("error during signUp")
+            console.log("error during signUp");
+        }
+
         if (validate()) {
             console.log('Form submitted:', { name, email, password, Cpassword });
         }
 
-        setName("")
-        setEmail("")
-        setPassword("")
-        setCpassword("")
+
     };
 
     return (

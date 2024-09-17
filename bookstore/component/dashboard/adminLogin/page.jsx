@@ -3,17 +3,18 @@
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import { useStateContext } from '../../context/stateContext'
-import { API } from '../../utils/api'
-import { toast } from 'react-toastify';
+import { API } from '../../../utils/api'
+import { toast } from "react-toastify";
 
-const Login = () => {
+const AdminLogin = () => {
 
     const router = useRouter()
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { setUser } = useStateContext()
+    const [adminLogin, setAdminLogin] = useState(null)
+
+    console.log("adminlogin", adminLogin);
 
     const [errors, setErrors] = useState({});
 
@@ -37,8 +38,6 @@ const Login = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // localStorage
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data =
@@ -47,36 +46,34 @@ const Login = () => {
             password
         }
         if (validate()) {
-            console.log('Form submitted:', { email, password });
-        }
-        try {
-            const response = await axios.post(API.user.login, data)
-            if (response.data.error) {
-                toast.error(response.data.error);  // Display error message
-                return;
+            try {
+                const response = await axios.post(API.user.adminLogin, data)
+                console.log("login", response);
+                localStorage.setItem('Adminlogin', JSON.stringify(response.data))
+                setAdminLogin(response.data);
+
+                setEmail('')
+                setPassword('')
+                toast("login successfully")
+
+                router.push("/adminPanel")
+
+            } catch (error) {
+                console.error(error);
+                console.log("error during login");
+                toast.error("incorrect password or email")
             }
-
-            console.log("login", response);
-            localStorage.setItem('login', JSON.stringify(response.data))
-            setUser(response.data)
-
-            setEmail('')
-            setPassword('')
-            toast("login successfully")
-            router.push("/")
-
-        } catch (error) {
-            console.error("error :", error);
-            console.log("error during login");
-            toast.error("incorrect email or password")
         }
 
     };
 
+    console.log("adminLogin", adminLogin);
+
     return (
+
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-                <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <input
@@ -106,13 +103,12 @@ const Login = () => {
                             Login
                         </button>
                     </div>
-                    <p className="text-center text-gray-600">
-                        Not registered? <span onClick={() => { router.push("signup") }} className="text-blue-500 hover:underline cursor-pointer">Signup</span>
-                    </p>
                 </form>
             </div>
+
         </div>
+
     )
 }
 
-export default Login
+export default AdminLogin

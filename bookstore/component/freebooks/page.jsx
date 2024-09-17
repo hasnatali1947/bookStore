@@ -6,13 +6,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import list from "../../public/list.json"
 import Cards from '../cards.jsx/page';
+import { useStateContext } from '../../context/stateContext';
 
 const Freebooks = () => {
 
+    const { getBook } = useStateContext()
+
     var settings = {
         dots: true,
-        infinite: false,
-        speed: 500,
+        infinite: true,
+        speed: 1000,
         slidesToShow: 3,
         slidesToScroll: 3,
         responsive: [
@@ -40,11 +43,13 @@ const Freebooks = () => {
         ]
     };
 
-    const filterData = list.filter((data) => data.category === "Free")
+    const filterData = getBook?.filter((data) => data.category === "Free")
+
+    console.log(filterData);
 
     return (
         <>
-            <div className=" max-w-screen-2xl container mx-auto md:px-20 px-4">
+            <div className="max-w-screen-2xl container mx-auto md:px-20 px-4">
                 <div>
                     <h1 className="font-semibold text-xl pb-2">Free Offered Courses</h1>
                     <p>
@@ -53,13 +58,19 @@ const Freebooks = () => {
                         corporis nulla non suscipit, iure neque earum?
                     </p>
                 </div>
-                <div>
-                    <Slider {...settings}>
-                        {filterData.map((item) => (
-                            <Cards item={item} key={item.id} />
-                        ))}
-                    </Slider>
-                </div>
+                {getBook ?
+                    <div>
+                        <Slider {...settings}>
+                            {filterData?.map((item) => (
+                                <Cards item={item} key={item._id} />
+                            ))}
+                        </Slider>
+                    </div>
+                    :
+                    <div style={{fontWeight: "bold", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        No books found
+                    </div>
+                }
             </div>
         </>
     );

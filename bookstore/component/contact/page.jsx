@@ -1,12 +1,18 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
+  const [state, handleSubmit] = useForm("mpwaezey");
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState({});
+
+  console.log(showSuccessMessage);
 
   const validate = () => {
     const newErrors = {};
@@ -29,16 +35,24 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
+  useEffect(() => {
 
-      console.log('Form submitted:', { name, email, message });
-      setName('');
-      setEmail('');
-      setMessage('');
+    if (validate()) {
+      setName("")
+      setEmail("")
+      setMessage("")
+
+      if (state.succeeded) {
+        console.log("true");
+        setShowSuccessMessage(true);
+        toast("Message send")
+        setTimeout(() => {
+          console.log("false");
+          setShowSuccessMessage(false);
+        }, 5000);
+      }
     }
-  };
+  }, [state.succeeded]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -46,7 +60,14 @@ const Contact = () => {
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Contact Us
         </h2>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        {showSuccessMessage ? (
+          <>
+            <h4>Thank you for your message!</h4>
+          </>
+        ) : (
+          <h4>I WOULD BE GLAD TO HEAR FROM YOU</h4>
+        )}
+        <form action="https://formspree.io/f/mpwaezey" method="POST" className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div className="mb-4">
               <label htmlFor="name" className="sr-only">
@@ -93,11 +114,16 @@ const Contact = () => {
               />
               {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
             </div>
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
           </div>
 
           <div>
             <button
-              type="submit"
+              type="submit" disabled={state.submitting}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Send Message
