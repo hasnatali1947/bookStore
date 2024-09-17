@@ -12,8 +12,8 @@ const Footer = () => {
             {/* <hr />    */}
             <footer className="footer footer-center text-base-content rounded p-10 dark:bg-slate-900 dark:text-white">
                 <nav className="grid grid-flow-col gap-4">
-                    <a className="link link-hover">About us</a>
-                    <a onClick={() => {router.push("./contact")}} className="link link-hover">Contact</a>
+                    <a onClick={() => router.push("/aboutUs")} className="link link-hover">About us</a>
+                    <a onClick={() => {router.push("/contact")}} className="link link-hover">Contact</a>
                 </nav>
                 <nav>
                     <div className="grid grid-flow-col gap-4">

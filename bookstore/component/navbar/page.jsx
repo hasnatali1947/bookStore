@@ -6,7 +6,31 @@ import { toast } from 'react-toastify';
 
 const page = () => {
 
-  const { user, setUser} = useStateContext()
+  const { user, setUser } = useStateContext()
+  const [sticky, setSticky] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const { getBook, setGetBook } = useStateContext();
+  console.log("search", search);
+  console.log("getBook", getBook);
+
+  useEffect(() => {
+    // Fetch books initially or when search term changes
+    if (search.length === 0) {
+      // If search is cleared, reset to original books
+      const storedBooks = localStorage.getItem('getBooks');
+      if (storedBooks) {
+        setGetBook(JSON.parse(storedBooks));
+      }
+    } else {
+      // Filter books based on the search term
+      const filteredBooks = JSON.parse(localStorage.getItem('getBooks') || '[]').filter(book =>
+        book.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setGetBook(filteredBooks);
+    }
+  }, [search, setGetBook]);
+
 
   const router = useRouter()
 
@@ -32,12 +56,11 @@ const page = () => {
         <a onClick={() => router.push("/contact")}>Contact</a>
       </li>
       <li>
-        <a>About</a>
+        <a onClick={() => router.push("/aboutUs")}>About</a>
       </li>
     </>
   );
 
-  const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,6 +129,7 @@ const page = () => {
                 type="text"
                 className="grow outline-none px-1 dark:bg-slate-900 dark:text-white"
                 placeholder="Search"
+                onChange={(e) => { setSearch(e.target.value) }}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +171,6 @@ const page = () => {
               >
                 Logout
               </a>
-
             </div>
 
           }

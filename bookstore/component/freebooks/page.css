@@ -1,0 +1,28 @@
+.slick-prev, .slick-next {
+    font-size: 24px;
+    color: red; 
+    z-index: 1; 
+    display: none;
+  }
+  
+  .slick-prev:hover, .slick-next:hover {
+    color: blue; 
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: rgba(0, 0, 0, 0.717);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .slick-prev {
+    left: -25px; 
+  }
+  
+  .slick-next {
+    right: -25px; 
+  }
+  

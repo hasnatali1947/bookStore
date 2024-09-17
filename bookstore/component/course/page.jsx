@@ -20,13 +20,10 @@ const Course = () => {
             <span className="text-pink-500"> Here! :)</span>
           </h1>
           <p className="mt-12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro,
-            assumenda? Repellendus, iste corrupti? Tempore laudantium
-            repellendus accusamus accusantium sed architecto odio, nisi expedita
-            quas quidem nesciunt debitis dolore non aspernatur praesentium
-            assumenda sint quibusdam, perspiciatis, explicabo sequi fugiat amet
-            animi eos aut. Nobis quisquam reiciendis sunt quis sed magnam
-            consequatur!
+            We're thrilled to welcome you! In this section, you'll find all the books
+            you need to enhance your learning experience. Whether you're starting a new
+            course or looking to deepen your knowledge, we have everything ready for you.
+            Dive in, explore, and make the most of your learning journey with us!
           </p>
           <Link href="/">
             <button className="mt-6 bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-700 duration-300">

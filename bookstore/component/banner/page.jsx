@@ -8,13 +8,13 @@ const Banner = () => {
                 <div className='order-2 md:order-1 w-full md:w-1/2'>
                     <div className='space-y-12 mr-12 md:mt-32'>
                         <h1 className="text-2xl md:text-4xl font-bold">
-                            Hello, welcomes here to learn something{" "}
-                            <span className="text-pink-500">new everyday!!!</span>
+                            Discover & Buy Your Favorite Books{" "}
+                            <span className="text-pink-500">with Ease!!!</span>
                         </h1>
                         <p className="text-sm md:text-xl">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-                            et totam. Tempora amet atque expedita, quae corrupti totam sed
-                            pariatur corporis at veniam est voluptas animi!
+                            Explore our vast collection of books and purchase securely through Stripe, ensuring a
+                            smooth and reliable checkout experience. Whether you're looking for the latest bestsellers
+                            or timeless classics, we've got you covered with a seamless online shopping journey!
                         </p>
                         <label className="input input-bordered flex items-center gap-2">
                             <svg
