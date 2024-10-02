@@ -1,4 +1,4 @@
-export const mainURL = "https://book-store-backend-lemon.vercel.app/";
+export const mainURL = "https://bookstore-backend-1-52wa.onrender.com";
 const url = mainURL + "/api/v1";
 
 const user = {
