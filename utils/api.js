@@ -1,4 +1,4 @@
-export const mainURL = "http://localhost:4500";
+export const mainURL = "https://book-store-two-flax.vercel.app";
 const url = mainURL + "/api/v1";
 
 const user = {
