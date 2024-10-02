@@ -1,4 +1,4 @@
-export const mainURL = "https://book-store-two-flax.vercel.app";
+export const mainURL = "https://book-store-backend-lemon.vercel.app/";
 const url = mainURL + "/api/v1";
 
 const user = {
