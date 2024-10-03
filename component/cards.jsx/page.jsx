@@ -59,7 +59,7 @@ const Cards = ({ item }) => {
           <img
             src={item.image}
             alt="Books"
-            className="w-[100%] h-[100%] object-cover"
+            className="w-full h-[220px] object-cover md:w-[100%] md:h-[220px]"
           />
         </figure>
         <div className="card-body">
